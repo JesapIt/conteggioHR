@@ -74,7 +74,7 @@ options = ['Call d\'area', 'Assemblea mensile', 'Delega', 'Recruiting', 'Mentori
 'Revisione task',
 'Task interno',
 'Evento',
- 'Organizzazione recruitment ', 'HR Buddy']
+ 'Organizzazione recruitment ', 'HR Buddy', 'Revisione Task']
 
 att = st.multiselect('Attività', options, key="multi")
 dictionary = {}

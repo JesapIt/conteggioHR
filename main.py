@@ -71,7 +71,7 @@ nome = st.text_input('Nome e/o Cognome')
 data = st.date_input('Data', value=date.today())
 options = ['Call d\'area', 'Assemblea mensile', 'Delega', 'Recruiting', 'Mentoring', 'Progetto esterno'
 ,'Progetto interno', 'Formazione', 'Call con HR buddy',
-'Task interno','Evento','Organizzazione recruitment ', 'HR Buddy', 'Revisione Task','Organizzazione area']
+'Task interno','Evento','Organizzazione recruitment ', 'HR Buddy', 'Revisione Task','Organizzazione area', 'Board Resp/Resp Vice']
 
 att = st.multiselect('Attività', options, key="multi")
 dictionary = {}

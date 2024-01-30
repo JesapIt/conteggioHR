@@ -107,6 +107,16 @@ att = st.multiselect('Attività', options, key="multi")
 dictionary = {}
 temp_att = []
 for a in att:
+	### estrazione nomi progetti in corso
+	prog_link = "https://docs.google.com/spreadsheets/d/1kaiBTPxp-o0IVn1j54QGuPJOeYdHxJ9Iqg30QwYqnGI/edit#gid=1965451645"
+	prog_spread_sht = client.open_by_url(prog_link)
+	prog_sht = prog_spread_sht.get_worksheet(1)
+
+	column_b = prog_sht.col_values(1)  # Column B (poi diventata colonna A con nuovo foglio) is index 1
+	column_d = prog_sht.col_values(3)  # Column D (poi diventata colonna C con nuovo foglio) is index 3
+	column_e = prog_sht.col_values(4)
+
+
 	if a == "Progetto esterno":
 		### estrazione nomi progetti in corso
 		prog_link = "https://docs.google.com/spreadsheets/d/1kaiBTPxp-o0IVn1j54QGuPJOeYdHxJ9Iqg30QwYqnGI/edit#gid=1965451645"
@@ -127,6 +137,20 @@ for a in att:
 			temp_att.append('Progetto esterno - ' + sel_prog)
 			n_ore = st.time_input(f'Numero di ore: {sel_prog}', datetime.time(1, 0), key=sel_prog+'1')
 			dictionary['Progetto esterno - ' + sel_prog] = n_ore
+		
+	elif a == "Progetto interno":
+
+		progetti_in_corso = []
+		for name, value, state in zip(column_b, column_d, column_e):
+			if value.lower() == 'in corso' and state.lower() == 'progetto interno':
+				progetti_in_corso.append(name)
+		### fine estrazione
+		sel_prog = st.selectbox("Selezionare il progetto", progetti_in_corso)
+		if sel_prog:
+			temp_att.append('Progetto interno - ' + sel_prog)
+			n_ore = st.time_input(f'Numero di ore: {sel_prog}', datetime.time(1, 0), key=sel_prog+'1')
+			dictionary['Progetto interno - ' + sel_prog] = n_ore
+
 
 	else:
 		temp_att.append(a)
@@ -154,3 +178,4 @@ header.css-1avcm0n, section {
 	background-color: rgba(89, 55, 146, 0.8);
 }
 </style>""", unsafe_allow_html=True)
+

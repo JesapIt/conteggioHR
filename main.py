@@ -100,7 +100,7 @@ nome = st.text_input('Nome e/o Cognome. Se Socio in prova, spunta la checkbox re
 in_prova = st.checkbox('Socio in Prova')
 data = st.date_input('Data', value=date.today())
 options = ['Call d\'area', 'Assemblea mensile', 'Call con Delegato HR', 'Board Resp/Resp Vice', 'Evento', 'Task Interno', 'Progetto Interno', 'Team Employer branding', 'Team CV', 'Team Mappatura competenze', 
-	   'Task esterno', 'Reportistica', 'Formazione', 'Delegato HR', 'Organizzazione REC', 'Mentoring', 'Recruiting', 'Progetto Esterno', 'Organizzazione Area', 'Revisione Task', 'Delega', 'Altro']
+	   'Task esterno', 'Reportistica', 'Formazione', 'Delegato HR', 'Organizzazione REC', 'Mentoring', 'Recruiting', 'Progetto Esterno', 'Organizzazione Area', 'Revisione Task', 'Delega', 'Altro', 'Business Game']
 
 att = st.multiselect('Attività', options, key="multi")
 dictionary = {}
